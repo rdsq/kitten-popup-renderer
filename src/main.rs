@@ -1,5 +1,6 @@
 mod calculate_width;
 mod brightnessctl;
+mod amixer;
 mod spawn_the_thing;
 mod commands;
 
@@ -17,6 +18,7 @@ struct Cli {
 enum Commands {
     Display(commands::display::Display),
     Brightness(commands::brightness::Brightness),
+    Volume(commands::volume::Volume),
 }
 
 fn main() {
@@ -25,5 +27,6 @@ fn main() {
     match cli.command {
         Commands::Display(args) => commands::display::display(args),
         Commands::Brightness(args) => commands::brightness::brightness(args),
+        Commands::Volume(args) => commands::volume::volume(args),
     }
 }
