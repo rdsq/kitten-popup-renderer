@@ -1,4 +1,6 @@
 mod calculate_width;
+mod brightnessctl;
+mod spawn_the_thing;
 mod commands;
 
 use clap::{Parser, Subcommand};
@@ -14,6 +16,7 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     Display(commands::display::Display),
+    Brightness(commands::brightness::Brightness),
 }
 
 fn main() {
@@ -21,5 +24,6 @@ fn main() {
 
     match cli.command {
         Commands::Display(args) => commands::display::display(args),
+        Commands::Brightness(args) => commands::brightness::brightness(args),
     }
 }
